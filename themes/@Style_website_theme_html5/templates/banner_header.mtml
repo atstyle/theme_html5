@@ -1,0 +1,23 @@
+<header id="branding">
+<div class="branding-inner">
+
+<h1><a href="<$mt:WebsiteURL$>" accesskey="1" title="<$mt:WebsiteName encode_html="1"$>"><img src="<$mt:WebsiteURL$>blogimg/logo.png" alt="<$mt:BlogName encode_html="1"$>" width="280" height="80"></a></h1>
+
+<div class="header-sub">
+
+<$mt:Include module="ヘッダナビ" blog_id="$website_id"$>
+
+<form method="get" action="<$mt:CGIPath$><$mt:SearchScript$>" class="search">
+<input type="hidden" name="IncludeBlogs" value="<$mt:WebsiteID$><mt:WebsiteHasBlog><mt:Blogs include_blogs="site">,<mt:BlogID></mt:Blogs></mt:WebsiteHasBlog>">
+<input type="hidden" name="limit" value="<$mt:SearchMaxResults$>">
+<label for="search" accesskey="y">このサイトの検索</label>
+<input type="text" size="15" id="search" name="search" value="<$mt:SearchString$>" tabindex="9">
+<input type="submit" value="Search"  tabindex="10" accesskey="z">
+</form>
+
+</div><!-- / header-sub -->
+
+<mt:If tag="BlogDescription"><h2><$mt:WebsiteDescription$></h2></mt:If>
+
+</div><!-- / branding-inner -->
+</header><!-- / branding -->

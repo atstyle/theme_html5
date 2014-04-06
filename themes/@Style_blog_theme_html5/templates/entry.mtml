@@ -1,0 +1,96 @@
+<!DOCTYPE html><mt:Unless regex_replace="/\s*\n+/g","\n">
+<html lang="<$mt:BlogLanguage$>">
+<head>
+<$mt:include module="HTMLヘッダー"$>
+<mt:EntryPrevious><link rel="prev" href="<$mt:EntryPermalink$>" title="<$mt:EntryTitle encode_html="1"$>"></mt:EntryPrevious>
+<mt:EntryNext><link rel="next" href="<$mt:EntryPermalink$>" title="<$mt:EntryTitle encode_html="1"$>"></mt:EntryNext>
+<$mt:EntryTrackbackData$>
+<title><$mt:EntryTitle encode_html="1"$>-<$mt:BlogName encode_html="1"$>-<mt:BlogParentWebsite><$mt:BlogName encode_html="1"$></mt:BlogParentWebsite></title>
+</head>
+
+<body onload="mtEntryOnLoad()">
+
+<mt:Ignore>===================header========================</mt:Ignore>
+<mt:BlogParentWebsite>
+<$mt:include module="バナーヘッダー" blog_id="$website_id"$>
+</mt:BlogParentWebsite>
+<mt:Ignore>===================/ header========================</mt:Ignore>
+
+<div id="wrap">
+
+<div class="wrap-inner">
+
+<div id="main">
+
+<mt:Ignore>===================パンくず========================</mt:Ignore>
+<ul class="path">
+<li><a href="<mt:BlogParentWebsite><$mt:WebsiteURL$></mt:BlogParentWebsite>">Home</a></li>
+<li><a href="<$mt:BlogURL$>"><$mt:BlogName encode_html="1"$></a></li>
+<mt:ParentCategories>
+<mt:IfNonZero tag="MTCategoryCount">
+<li><a href="<$mt:CategoryArchiveLink$>"><$mt:CategoryLabel$></a></li>
+<mt:Else><li><$mt:CategoryLabel$></li></mt:Else>
+</mt:IfNonZero>
+</mt:ParentCategories>
+<li><$mt:EntryTitle$></li>
+</ul>
+<mt:Ignore>===================/ パンくず========================</mt:Ignore>
+
+<article id="entry-<$mt:EntryID$>" class="entry">
+
+<mt:Ignore>===================article header========================</mt:Ignore>
+<header>
+<h2><$mt:EntryTitle$></h2>
+<ul class="entry-meta">
+<li><time datetime="<$mt:EntryDate format_name="iso8601"$>"><$mt:EntryDate format="%x"$></time> <mt:IfNonEmpty tag="EntryAuthorDisplayName"><$mt:EntryAuthorLink show_email="0"$></mt:IfNonEmpty></li>
+<mt:IfCommentsActive><li><a href="<$mt:EntryPermalink$>#comments" title="「<$mt:EntryTitle$>」へのコメント"><$mt:EntryCommentCount singular="コメント(1)" plural="コメント(#)"$></a></li></mt:IfCommentsActive>
+<mt:IfPingsActive><li><a href="<$mt:EntryPermalink$>#trackbacks" title="「<$mt:EntryTitle$>」へのトラックバック"><$mt:EntryTrackbackCount singular="トラックバック(1)" plural="トラックバック(#)"$></a></li></mt:IfPingsActive>
+</ul>
+</header>
+<mt:Ignore>===================/ article header========================</mt:Ignore>
+
+<mt:Ignore>===================Entry========================</mt:Ignore>
+<div class="article-body">
+<mt:IfNonEmpty tag="EntryBody">
+<$mt:EntryBody replace="<br />","<br>" regex_replace="/<img([^>]+) \/>/g","<img$1>"$>
+</mt:IfNonEmpty>
+<mt:If tag="EntryMore" convert_breaks="0">
+<div id="more">
+<$mt:EntryMore replace="<br />","<br>" regex_replace="/<img([^>]+) \/>/g","<img$1>"$>
+</div><!-- / more -->
+</mt:If>
+</div><!-- / article-body -->
+<mt:Ignore>===================/ Entry========================</mt:Ignore>
+
+<mt:EntryIfTagged>
+<div class="entry-tags">
+<h3>Tag</h3>
+<ul>
+<mt:EntryTags>
+<li><a href="<$mt:TagSearchLink include_blogs="site" include_with_website="1" encode_js="1"$>" rel="tag" title="タグ「<$mt:TagName>」の一覧"><$mt:TagName></a></li>
+</mt:EntryTags>
+</ul>
+</div>
+</mt:EntryIfTagged>
+
+<$mt:Include module="トラックバック" blog_id="$website_id"$>
+<$mt:Include module="コメント" blog_id="$website_id"$>
+
+</article><!-- / entry -->
+
+</div><!-- / main -->
+
+<mt:BlogParentWebsite>
+<$mt:include module="サイドバー" blog_id="$website_id"$>
+</mt:BlogParentWebsite>
+
+</div><!-- / wrap-inner -->
+
+</div><!-- / wrap -->
+
+<mt:BlogParentWebsite>
+<$mt:include module="バナーフッター" blog_id="$website_id">
+</mt:BlogParentWebsite>
+
+</body>
+</html></mt:Unless>

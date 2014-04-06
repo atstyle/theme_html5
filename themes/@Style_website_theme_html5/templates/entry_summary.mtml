@@ -1,0 +1,43 @@
+<article id="entry-<$mt:EntryID$>">
+
+<$mt:EntryTrackbackData$>
+
+<mt:Ignore>===================article header========================</mt:Ignore>
+<header>
+<h2><a href="<$mt:EntryPermalink$>" title="「<$mt:EntryTitle$>」へのパーマリンク" rel="bookmark"><$mt:EntryTitle$></a></h2>
+<ul class="entry-meta">
+<li><time datetime="<$mt:EntryDate format_name="iso8601"$>"><$mt:EntryDate format="%x"$></time> <mt:IfNonEmpty tag="EntryAuthorDisplayName"><$mt:EntryAuthorLink show_email="0"$></mt:IfNonEmpty></li>
+<mt:IfCommentsActive><li><a href="<$mt:EntryPermalink$>#comments" title="「<$mt:EntryTitle$>」へのコメント"><$mt:EntryCommentCount singular="コメント(1)" plural="コメント(#)"$></a></li></mt:IfCommentsActive>
+<mt:IfPingsActive><li><a href="<$mt:EntryPermalink$>#trackbacks" title="「<$mt:EntryTitle$>」へのトラックバック"><$mt:EntryTrackbackCount singular="トラックバック(1)" plural="トラックバック(#)"$></a></li></MTIfPingsActive>
+</ul><!-- / entry-meta -->
+</header>
+<mt:Ignore>===================/ article header========================</mt:Ignore>
+
+<mt:Ignore>===================Entry========================</mt:Ignore>
+<mt:If tag="EntryBody">
+<div class="article-body">
+<$mt:EntryBody replace="<br />","<br>" regex_replace="/<img([^>]+) \/>/g","<img$1>"$>
+</div><!-- / article-body -->
+</mt:If>
+<mt:Ignore>===================/ Entry========================</mt:Ignore>
+
+<mt:EntryIfTagged>
+<div class="entry-tags">
+<h3>Tag</h3>
+<ul>
+<mt:EntryTags>
+<li><a href="<$mt:TagSearchLink include_blogs="site" include_with_website="1" encode_js="1"$>" rel="tag" title="タグ「<$mt:TagName>」の一覧"><$mt:TagName></a></li>
+</mt:EntryTags>
+</ul>
+</div><!-- / entry-tags -->
+</mt:EntryIfTagged>
+
+<mt:Ignore>===================footer========================</mt:Ignore>
+<mt:If tag="EntryMore" convert_breaks="0">
+<footer class="extended">
+<span>続きを読む</span><a href="<$mt:EntryPermalink$>#more" rel="bookmark" title="「<$mt:EntryTitle$>」の続きを読む"><$mt:EntryTitle$></a>
+</footer>
+</mt:If>
+<mt:Ignore>=================== /footer========================</mt:Ignore>
+
+</article>

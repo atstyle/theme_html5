@@ -1,0 +1,81 @@
+<!DOCTYPE html><mt:Unless regex_replace="/\s*\n+/g","\n">
+<html lang="<$mt:BlogLanguage$>">
+<head>
+<$mt:include module="HTMLヘッダー"$>
+<title><$mt:PageTitle encode_html="1"$>-<$mt:BlogName encode_html="1"$>-<mt:BlogParentWebsite><$MTBlogName encode_html="1"$></mt:BlogParentWebsite></title>
+<$mt:EntryTrackbackData$>
+</head>
+
+<body onload="mtEntryOnLoad()">
+
+<mt:BlogParentWebsite>
+<$mt:include module="バナーヘッダー" blog_id="$website_id"$>
+</mt:BlogParentWebsite>
+
+<div id="wrap">
+
+<div class="wrap-inner">
+
+<div id="main">
+
+<mt:Ignore>===================パンくず========================</mt:Ignore>
+<ul class="path">
+<li><a href="<mt:BlogParentWebsite><$mt:WebsiteURL$></mt:BlogParentWebsite>">Home</a></li>
+<li><a href="<$MTBlogURL$>"><$MTBlogName encode_html="1"$></a></li>
+<li><$MTPageTitle$></li>  
+</ul>
+<mt:Ignore>===================/ パンくず========================</mt:Ignore>
+
+<article id="page-<$mt:PageID$>" class="page">
+
+<mt:Ignore>===================article header========================</mt:Ignore>
+<header>
+<h2><$MTPageTitle$></h2>
+</header>
+<mt:Ignore>===================/ article header========================</mt:Ignore>
+
+<div class="article-body">
+<mt:If tag="PageBody">
+<$mt:PageBody replace="<br />","<br>" regex_replace="/<img([^>]+) \/>/g","<img$1>"$>
+</mt:If>
+
+<mt:If tag="PageMore">
+<div id="more">
+<$mt:PageMore replace="<br />","<br>" regex_replace="/<img([^>]+) \/>/g","<img$1>"$>
+</div><!-- / more -->
+</mt:If>
+</div><!-- / article-body -->
+
+<mt:PageIfTagged>
+<div class="entry-tags">
+<h3>タグ</h3> 
+<ul>
+<mt:EntryTags>
+<li><a href="<$mt:TagSearchLink include_blogs="site" include_with_website="1" encode_js="1"$>" rel="tag" title="タグ「<$mt:TagName>」の一覧"><$mt:TagName></a></li>
+</mt:EntryTags>
+</ul>
+</div>
+</mt:PageIfTagged>
+
+<$mt:Include module="トラックバック" blog_id="$website_id"$>
+<$mt:Include module="コメント" blog_id="$website_id"$>
+
+</article><!-- / page -->
+<mt:Ignore>===================/ Page========================</mt:Ignore>
+
+</div><!-- / main -->
+
+<mt:BlogParentWebsite>
+<$mt:include module="サイドバー" blog_id="$website_id"$>
+</mt:BlogParentWebsite>
+
+</div><!-- / wrap-inner -->
+
+</div><!-- / wrap -->
+
+<mt:BlogParentWebsite>
+<$mt:include module="バナーフッター" blog_id="$website_id">
+</mt:BlogParentWebsite>
+
+</body>
+</html></mt:Unless>

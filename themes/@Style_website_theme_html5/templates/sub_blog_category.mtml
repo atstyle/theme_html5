@@ -1,0 +1,17 @@
+<mt:WebsiteHasblog>
+<mt:Blogs include_blogs="site">
+<section class="categories">
+<h2><a href="<$mt:BlogURL$>"><$mt:BlogName$></a></h2>
+<mt:TopLevelCategories>
+<mt:SubCatIsFirst>
+<ul>
+</mt:SubCatIsFirst>
+<mt:IfNonZero tag="MTCategoryCount">
+<li><a href="<$mt:CategoryArchiveLink$>" title="「<mt:CategoryLabel>」on「<$mt:BlogName$>」"><mt:CategoryLabel></a><mt:Else><li><mt:CategoryLabel></mt:Else></mt:IfNonZero><mt:SubCatsRecurse max_depth="3"></li>
+<mt:SubCatIsLast>
+</ul>
+</mt:SubCatIsLast>
+</mt:TopLevelCategories>
+</section>
+</mt:Blogs>
+</mt:WebsiteHasblog>

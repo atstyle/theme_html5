@@ -1,0 +1,171 @@
+--- 
+id: @Style_website_theme_html5
+label: @Style ウェブサイトテーマ html5
+name: @Style ウェブサイトテーマ html5
+version: 1.0
+author_link: http://atstyle.biz/theme_temp/free/mt5_html5/
+author_name: "@Style"
+class: website
+description: @Styleオリジナルウェブサイト。ウェブサイトに存在するブログのコンテンツをポータルウェブサイトとして表示するウェブサイトを作成します。
+thumbnail_file: thumb.png
+thumbnail_file_medium: thumb-medium.png
+thumbnail_file_small: thumb-small.png
+elements: 
+  default_folders:
+    importer: default_folders
+    name: Default Folders
+    component: ~
+    data:
+      about:
+        label: About
+  default_pages:
+    importer: default_pages
+    name: Default Pages
+    component: ~
+    data:
+      top:
+        basename: top
+        title: ウェブサイトのトップページ
+        text: |
+          <p>アットスタイルテンプレートで生成されたウェブサイトのトップページです。タイトルを含め内容を適切に書き換えてください。</p>
+        tags: @home
+      index:
+        basename: about
+        title: About
+        text: |
+          <p><strong>サンプルテキスト</strong>・Web標準準拠によるアクセシビリティアップ。正しくマークアップを行うことで、オペレーティングシステムやブラウザなどの環境を問わず、あらゆるユーザーに対してアクセシブルなWebサイトを構築することを目指します。</p>
+          <dl class="info">
+          <dt>名前</dt>
+          <dd>アットスタイル 太郎</dd>
+          <dt>誕生日</dt>
+          <dd>1月1日</dd>
+          <dt>趣味・興味</dt>
+          <dd>柴犬</dd>
+          <dt>ウェブサイト</dt>
+          <dd><a href="http://atstyle.biz/">http://atstyle.biz/</a></dd>
+          </dl>
+        tags: @topnav1,@nav1
+        folder: about
+
+  template_set: 
+    importer: template_set
+    component: ~
+    data: 
+      base_path: templates
+      templates: 
+        index: 
+          feed_recent: 
+            label: 最新記事のフィード
+            outfile: atom.xml
+            rebuild_me: 1
+          javascript: 
+            label: JavaScript
+            outfile: js/mt.js
+            rebuild_me: 1
+          main_index: 
+            label: メインページ
+            outfile: index.html
+            rebuild_me: 1
+          rsd: 
+            label: RSD
+            outfile: rsd.xml
+            rebuild_me: 1
+          styles: 
+            label: スタイルシート
+            outfile: css/styles.css
+            rebuild_me: 1
+          reset_stylesheet: 
+            label: リセットスタイルシート
+            outfile: css/reset_stylesheet.css
+            rebuild_me: 1
+          sitemap: 
+            label: Site Map
+            outfile: sitemap/index.html
+            rebuild_me: 1
+          slimbox2_css:
+            label: slimbox2.css
+            outfile: css/slimbox2.css
+            rebuild_me: 1
+          slimbox2_js:
+            label: slimbox2.js
+            outfile: js/slimbox2.js
+            rebuild_me: 1
+          jquery_js:
+            label: jquery.js
+            outfile: js/jquery.js
+            rebuild_me: 1
+
+        page: 
+          page: 
+            label: ウェブページ
+            mappings: 
+              page: 
+                archive_type: Page
+                preferred: 1
+
+        module: 
+          comments: 
+            label: コメント
+          entry_summary: 
+            label: ブログ記事の概要
+          banner_footer: 
+            label: バナーフッター
+          banner_header: 
+            label: バナーヘッダー
+          navigation: 
+            label: ナビゲーション
+          nav_list: 
+            label: ナビゲーションリスト
+          sub: 
+            label: サイドバー
+          trackbacks: 
+            label: トラックバック
+          html_head:
+            label: HTMLヘッダー
+          header_nav:
+            label: ヘッダナビ
+          header_nav_list:
+            label: ヘッダナビリスト
+          copy_footer:
+            label: コピー(フッター)
+
+        system: 
+          comment_preview: 
+            label: コメントプレビュー
+          comment_response: 
+            label: コメント完了
+          dynamic_error: 
+            label: ダイナミックパブリッシングエラー
+          popup_image: 
+            label: ポップアップ画像
+          search_results: 
+            label: 検索結果
+
+        widget: 
+          sub_page_list: 
+            label: ページリスト
+          sub_blog_category: 
+            label: カテゴリ
+          sub_recent_comments: 
+            label: 最近のコメント
+          sub_recent_trackback: 
+            label: 最近のトラックバック
+          sub_photo: 
+            label: フォト
+          sub_tag_cloud: 
+            label: タグクラウド
+          sub_openid: 
+            label: OpenID対応
+          sub_creative_commons:
+            label: クリエイティブコモンズ
+          sub_free_box: 
+            label: サイドバー フリーボックス
+
+
+        widgetset: 
+          site_widgetset: 
+            label: サイドバーウィジェットセット
+            order: 1000
+            widgets: 
+              - カテゴリ
+

@@ -1,0 +1,59 @@
+<mt:If name="comment_confirmation">
+<$mt:Var name="page_title" value="確認"$>
+<$mt:Var name="message" value="<p>コメントを投稿しました。</p>"$>
+<mt:Else name="comment_pending">
+<$mt:Var name="page_title" value="コメントありがとうございます。"$>
+<$mt:Var name="message" value="<p>コメントは現在承認されるまで公開を保留されています。</p>"$>
+<mt:Else name="comment_error">
+<$mt:Var name="page_title" value="コメント投稿エラー"$>
+<mt:SetVarBlock name="message"><p>コメントを投稿できませんでした。エラー: <$mt:ErrorMessage$></p></mt:SetVarBlock>
+</mt:If>
+
+<!DOCTYPE html>
+<html lang="<$MTBlogLanguage$>"><MTUnless regex_replace="/\s*\n+/g","\n">
+<head>
+<$mt:Include module="HTMLヘッダー"$>
+<title><$mt:Var name="page_title"$>-<$mt:BlogName encode_html="1"$></title>
+</head>
+
+<body>
+
+<$mt:Include module="バナーヘッダー"$>
+
+<div id="wrap">
+
+<div class="wrap-inner">
+
+<div id="main">
+
+<ul class="path">
+<li><a href="<$mt:WebsiteURL$>" title="ホーム">ホーム</a></li>
+<li><$mt:Var name="page_title"$></li>
+</ul>
+
+<section>
+
+<header>
+<h2><$mt:Var name="page_title"$></h2>
+</header>
+
+<$mt:Var name="message"$>
+
+<footer>
+<p><a href="<mt:If name="comment_error">javascript:history.back()<mt:Else><$mt:EntryLink$></mt:If>">元の記事</a>に戻る</p>
+</footer>
+
+</section>
+
+</div><!-- / main -->
+
+<$mt:Include module="サイドバー"$>
+
+</div><!-- / wrap-inner -->
+
+</div><!-- / wrap -->
+
+<$mt:Include module="バナーフッター"$>
+
+</body>
+</html></mt:Unless>

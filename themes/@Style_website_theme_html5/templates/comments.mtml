@@ -1,0 +1,118 @@
+<mt:IfCommentsActive>
+<section id="comments" class="comments">
+<mt:Comments>
+
+<mt:CommentsHeader>
+<header>
+<h3><$mt:EntryCommentCount singular="コメント(1)" plural="コメント(#)" none="コメント(0)"$></h3>
+</header>
+
+<div class="comments-content">
+</mt:CommentsHeader>
+
+<article id="comment-<$mt:CommentID$>" class="comment<mt:IfCommentParent> comment-reply</mt:IfCommentParent>">
+
+<header class="comment-header">
+<h4 class="asset-meta">
+<$mt:CommentAuthorIdentity regex_replace="/<img([^>]+) \/>/g","<img$1>"$>
+<mt:IfCommentParent>
+<$mt:CommentAuthorLink$>から<a href="<mt:CommentParent><$mt:CommentLink$></mt:CommentParent>"><mt:CommentParent><$mt:CommentAuthor$></mt:CommentParent></a>への返信
+<mt:Else>
+<span class="vcard author"><$mt:CommentAuthorLink$></span>
+</mt:IfCommentParent>
+<span class="comment-pubdate"><time datetime="<$mt:CommentDate format_name="iso8601"$>"><$mt:CommentDate format="%Y.%m.%d"$></time></span>
+<mt:IfCommentsAccepted>
+<$mt:CommentReplyToLink$>
+</mt:IfCommentsAccepted>
+</h4>
+</header>
+
+<div class="comment-content">
+<$mt:CommentBody$>
+</div>
+
+</article>
+<mt:CommentsFooter>
+</div>
+</mt:CommentsFooter>
+</mt:Comments>
+
+
+<mt:IfCommentsAccepted>
+<section class="comments-open" id="comments-open">
+
+<header>
+<h3 class="comments-open-header">コメントする</h3>
+</header>
+
+<div class="comments-open-content">
+
+<div id="comment-greeting"></div>
+
+<form method="post" action="<$mt:CGIPath$><$mt:CommentScript$>" name="comments_form" id="comments-form" onsubmit="return mtCommentOnSubmit(this)">
+<input type="hidden" name="static" value="1">
+<input type="hidden" name="entry_id" value="<$mt:EntryID$>">
+<input type="hidden" name="__lang" value="<$mt:BlogLanguage$>">
+<input type="hidden" name="parent_id" value="<$mt:CommentParentID$>" id="comment-parent-id">
+<input type="hidden" name="armor" value="1">
+<input type="hidden" name="preview" value="">
+<input type="hidden" name="sid" value="">
+
+<div id="comments-open-data">
+
+<div id="comment-form-name">
+<label for="comment-author">名前</label>
+<input id="comment-author" name="author" size="30" tabindex="1" accesskey="n" value="" onfocus="mtCommentFormOnFocus()">
+</div>
+
+<div id="comment-form-email">
+<label for="comment-email">電子メール</label>
+<input type="email" id="comment-email" name="email" size="30" tabindex="2" accesskey="m" value="" onfocus="mtCommentFormOnFocus()">
+</div>
+
+<div id="comment-form-url">
+<label for="comment-url">URL</label>
+<input type="url" id="comment-url" name="url" size="30" tabindex="3" accesskey="u" value="" onfocus="mtCommentFormOnFocus()">
+</div>
+
+<div id="comment-form-remember-me">
+<label for="comment-bake-cookie">ログイン情報を記憶</label>
+<input type="checkbox" id="comment-bake-cookie" name="bakecookie" onclick="mtRememberMeOnClick(this)" onkeypress="mtRememberMeOnClick(this)" value="1" tabindex="4" accesskey="r">
+</div>
+
+</div>
+
+<div id="comment-form-reply" style="display:none">
+<label for="comment-reply" id="comment-reply-label"></label>
+<input type="checkbox" id="comment-reply" name="comment_reply" value="" onclick="mtSetCommentParentID()" onkeypress="mtSetCommentParentID()" tabindex="5" accesskey="c">
+</div>
+
+<div id="comments-open-text">
+<label for="comment-text">コメント
+<mt:IfAllowCommentHTML>(スタイル用のHTMLタグを使えます)</mt:IfAllowCommentHTML></label>
+<textarea id="comment-text" name="text" rows="15" cols="50" onfocus="mtCommentFormOnFocus()" tabindex="6" accesskey="t">Leave your comment here.</textarea>
+</div>
+
+<div id="comments-open-captcha"></div>
+
+<div id="comments-open-footer">
+<input type="submit" name="preview_button" id="comment-preview" value="確認" onclick="this.form.preview.value='1';" onkeypress="this.form.preview.value='1';" tabindex="76" accesskey="v">
+<input type="submit" name="post" id="comment-submit" value="投稿" tabindex="8" accesskey="s">
+</div>
+
+</form>
+
+
+</div>
+</section>
+
+    <script type="text/javascript">
+    <!--
+    mtAttachEvent("load", mtEntryOnLoad);
+    mtAttachEvent("unload", mtEntryOnUnload);
+    //-->
+    </script>
+    </mt:IfCommentsAccepted>
+
+</section>
+</mt:IfCommentsActive>

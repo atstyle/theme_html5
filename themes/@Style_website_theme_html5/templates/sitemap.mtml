@@ -1,0 +1,121 @@
+<mt:SetVarBlock name="page_title">Site Map-<$mt:BlogName encode_html="1"$></mt:SetVarBlock>
+<!DOCTYPE html><mt:Unless regex_replace="/\s*\n+/g","\n">
+<html lang="<$mt:BlogLanguage$>">
+<head>
+<$mt:include module="HTMLヘッダー"$>
+<title><$mt:var name="page_title"$></title>
+</head>
+
+<body>
+
+<$mt:Include module="バナーヘッダー"$>
+
+<div id="wrap">
+
+<div class="wrap-inner">
+
+<div id="main">
+
+<mt:Ignore>===================パンくず========================</mt:Ignore>
+<ul class="path">
+<li><a href="<$mt:WebsiteURL$>">Home</a></li>
+<li>Site Map</li>
+</ul>
+<mt:Ignore>===================/ パンくず========================</mt:Ignore>
+
+<section class="sitemap">
+
+<header>
+<h2>Site Map</h2>
+</header>
+
+<ul>
+<mt:Ignore>===========================================</mt:Ignore>
+
+<li class="home"><a href="<$mt:Link template="メインページ"$>">Home</a>
+
+<MTIgnore>======================ウェブサイトのウェブページ======================</MTIgnore>
+
+<mt:IfNonZero tag="BlogPageCount">
+
+<ul class="tree">
+
+<$mt:Include module="ナビゲーションリスト"$>
+
+<mt:Pages sort_by="created_on" sort_order="descend" tag="NOT(@home) AND NOT(@nav1) AND NOT(@nav2) AND NOT(@nav3) AND NOT(@nav4) AND NOT(@nav5)" lastn="0">
+<li><a href="<$mt:PagePermalink$>" title="<$mt:PageTitle$>"><$mt:PageTitle$></a></li>
+</mt:Pages>
+
+</ul>
+
+</MTIfNonZero>
+
+<mt:Ignore>======================ブログ======================</mt:Ignore>
+
+<mt:Blogs include_blogs="site">
+
+<ul class="tree">
+<li class="tree<mt:If name="__last__">_end</mt:if>"><a href="<$mt:BlogURL$>"><$mt:BlogName$></a>
+
+<mt:Ignore>======================ブログのウェブページ======================</mt:Ignore>
+
+<mt:IfNonZero tag="BlogPageCount">
+
+<mt:Pages lastn="0">
+
+<mt:PagesHeader><ul class="tree"></mt:PagesHeader>
+<li><a href="<$mt:PagePermalink$>" title="<$mt:PageTitle$>"><$mt:PageTitle$></a></li>
+<mt:PagesFooter></ul></mt:PagesFooter>
+</mt:Pages>
+
+</mt:IfNonZero>
+
+<mt:Ignore>======================ブログのブログ記事（カテゴリ別）======================</mt:Ignore>
+
+<mt:TopLevelCategories>
+
+<mt:SubCatIsFirst>
+<ul class="tree">
+</mt:SubCatIsFirst>
+
+<mt:IfNonZero tag="MTCategoryCount">
+<li class="tree<mt:SubCatIsLast>_end</mt:SubCatIsLast>"><a href="<$mt:CategoryArchiveLink$>" title="<$mt:CategoryDescription$>"><mt:CategoryLabel></a>
+<mt:Else>
+<li class="tree<mt:SubCatIsLast>_end</mt:SubCatIsLast>"><mt:CategoryLabel> 
+</mt:Else>
+</mt:IfNonZero>
+
+<mt:SubCatsRecurse max_depth="3">
+</li>
+<mt:SubCatIsLast>
+</ul>
+</mt:SubCatIsLast>
+
+</mt:TopLevelCategories>
+
+<mt:Ignore>===========================================</mt:Ignore>
+</li>
+</ul>
+
+</mt:Blogs>
+
+<mt:Ignore>===========================================</mt:Ignore>
+</li>
+
+<mt:Ignore>===========================================</mt:Ignore>
+</ul>
+
+</section><!-- / sitemap -->
+
+</div><!-- / main -->
+
+<$mt:Include module="サイドバー"$>
+
+</div><!-- / wrap-inner -->
+
+</div><!-- / wrap -->
+
+<$mt:Include module="バナーフッター"$>
+
+</body>
+</html></mt:Unless>

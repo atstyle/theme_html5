@@ -1,0 +1,22 @@
+<mt:If name="main_index">
+<mt:If tag="BlogCommentCount" include_blogs="site">
+<mt:Entries recently_commented_on="5" include_blogs="site">
+<mt:EntriesHeader>
+<section class="comment-list">
+<h2>Comments</h2>
+
+<ol>
+</mt:EntriesHeader>
+
+<li><a href="<$mt:EntryPermalink$>"><$mt:EntryTitle$></a><MTComments>
+<div class="comment-author"><span><$MTCommentAuthor$> <$MTCommentDate format="%m月%d日"$></span></div>
+</MTComments>
+</li>
+
+<mt:EntriesFooter>
+</ol>
+</section>
+</mt:EntriesFooter>
+</mt:Entries>
+</mt:If>
+</mt:If>

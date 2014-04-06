@@ -1,0 +1,141 @@
+<mt:SetVarBlock name="page_title">コメントの確認-<$mt:BlogName encode_html="1"$></mt:SetVarBlock>
+<!DOCTYPE html>
+<html lang="<$MTBlogLanguage$>"><mt:Unless regex_replace="/\s*\n+/g","\n">
+<head>
+    <script type="text/javascript">
+    /* <![CDATA[ */
+    var user = <$mt:UserSessionState$>;
+    var is_preview = true;
+    /* ]]> */
+    </script>
+<$mt:Include module="HTMLヘッダー"$>
+<title><$mt:var name="page_title"$>-<mt:BlogParentWebsite><$MTBlogName encode_html="1"$></mt:BlogParentWebsite></title>
+</head>
+
+<body onload="mtEntryOnLoad()" onunload="mtEntryOnUnload()">
+
+<mt:BlogParentWebsite>
+<$mt:include module="バナーヘッダー" blog_id="$website_id"$>
+</mt:BlogParentWebsite>
+
+<div id="wrap">
+
+<div class="wrap-inner">
+
+<div id="main">
+
+<mt:Ignore>===================パンくず========================</mt:Ignore>
+<ul class="path">
+<li><a href="<mt:BlogParentWebsite><$mt:WebsiteURL$></mt:BlogParentWebsite>">ホーム</a></li>
+<li><a href="<$MTBlogURL$>"><$mt:BlogName encode_html="1"$></a></li>
+<li>コメントの確認</li>
+</ul>
+<mt:Ignore>===================/ パンくず========================</mt:Ignore>
+
+<section>
+<mt:Ignore>===================section header========================</mt:Ignore>
+<header>
+<h2><$mt:var name="page_title"$></h2>
+</header>
+<mt:Ignore>===================section header========================</mt:Ignore>
+
+<mt:Ignore>===================Comment Preview===================</mt:Ignore>
+<article class="comment" id="comment-<$mt:CommentID$>">
+
+<header class="asset-meta">
+<$mt:CommentAuthorIdentity regex_replace="/<img([^>]+) \/>/g","<img$1>"$>
+<mt:IfCommentParent>
+<$mt:CommentAuthorLink$>から<a href="<mt:CommentParent><$mt:CommentLink$></mt:CommentParent>"><mt:CommentParent><$mt:CommentAuthor$></mt:CommentParent></a>への返信
+<mt:Else>
+<span class="vcard author"><$mt:CommentAuthorLink$></span>
+</mt:IfCommentParent>
+<span class="comment-pubdate"> <a href="<$mt:CommentLink$>"><time datetime="<$mt:CommentDate format_name="iso8601"$>"><$mt:CommentDate$></time></a></span>
+</header>
+
+<div class="comment-content">
+<$mt:CommentBody$>
+</div>
+
+</article>
+<mt:Ignore>===================Comment Preview===================</mt:Ignore>
+</section>
+
+<mt:Ignore>===================Comment Form===================</mt:Ignore>
+<section class="comments-open" id="comments-open">
+
+<header>
+<h3>コメントする</h3>
+</header>
+
+<div class="comments-open-content">
+<div id="comment-greeting"></div>
+<form method="post" action="<$mt:CGIPath$><$mt:CommentScript$>" name="comments_form" id="comments-form" onsubmit="return mtCommentOnSubmit(this)">
+<input type="hidden" name="static" value="1">
+<input type="hidden" name="armor" value="1">
+<input type="hidden" name="preview" value="">
+<input type="hidden" name="entry_id" value="<$mt:EntryID$>">
+<input type="hidden" name="__lang" value="<$mt:BlogLanguage$>">
+<mt:IfCommentParent>
+<input type="hidden" name="parent_id" value="<$mt:CommentParentID$>" id="comment-parent-id">
+</mt:IfCommentParent>
+
+<div id="comments-open-data">
+
+<div id="comment-form-name">
+<label for="comment-author">名前</label>
+<input id="comment-author" name="author" size="30" value="<$mt:CommentAuthor encode_html="1"$>" onfocus="mtShowCaptcha()" />
+</div>
+
+<div id="comment-form-email">
+<label for="comment-email">電子メール</label>
+<input type="email" id="comment-email" name="email" size="30" value="<$mt:CommentEmail encode_html="1"$>" onfocus="mtShowCaptcha()">
+</div>
+
+<div id="comment-form-url">
+<label for="comment-url">URL</label>
+<input type="url" id="comment-url" name="url" size="30" value="<$mt:CommentURL encode_html="1"$>" onfocus="mtShowCaptcha()">
+</div>
+
+</div>
+
+<mt:IfCommentParent>
+<div id="comment-form-reply">
+<input type="checkbox" id="comment-reply" name="comment_reply" value="<$mt:CommentParentID$>" checked="checked" onclick="mtSetCommentParentID()">
+<label for="comment-reply" id="comment-reply-label"><mt:CommentParent><$mt:CommentAuthor$></mt:CommentParent>からのコメントに返信</label>
+</div>
+</mt:IfCommentParent>
+
+<div id="comments-open-text">
+<label for="comment-text">コメント <mt:IfAllowCommentHTML>(スタイル用のHTMLタグを使えます)</mt:IfAllowCommentHTML></label>
+<textarea id="comment-text" name="text" rows="15" cols="50" onfocus="mtShowCaptcha()"><$mt:CommentBody autolink="0" sanitize="0" convert_breaks="0" encode_html="1"$></textarea>
+</div>
+
+<div id="comments-open-captcha"></div>
+<div id="comments-open-footer">
+<input type="submit" accesskey="v" name="preview_button" id="comment-preview" value="確認" onclick="this.form.preview.value='1';">
+<input type="submit" accesskey="s" name="post" id="comment-submit" value="投稿" />
+<input type="button" name="cancel" id="comment-cancel" value="キャンセル" onclick="window.location='<$mt:EntryPermalink$>'">
+</div>
+</form>
+
+
+</div>
+</section>
+<mt:Ignore>===================Comment Form===================</mt:Ignore>
+
+</div><!-- / main -->
+
+<mt:BlogParentWebsite>
+<$mt:include module="サイドバー" blog_id="$website_id"$>
+</mt:BlogParentWebsite>
+
+</div><!-- / wrap-inner -->
+
+</div><!-- / wrap -->
+
+<mt:BlogParentWebsite>
+<$mt:include module="バナーフッター" blog_id="$website_id">
+</mt:BlogParentWebsite>
+
+</body>
+</html></mt:Unless>

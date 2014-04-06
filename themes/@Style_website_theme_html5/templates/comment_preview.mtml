@@ -1,0 +1,126 @@
+<mt:SetVarBlock name="page_title">コメントの確認-<$mt:BlogName encode_html="1"$></mt:SetVarBlock>
+<!DOCTYPE html><mt:Unless regex_replace="/\s*\n+/g","\n">
+<html lang="<$mt:BlogLanguage$>">
+<head>
+    <script type="text/javascript">
+    /* <![CDATA[ */
+    var user = <$mt:UserSessionState$>;
+    var is_preview = true;
+    /* ]]> */
+    </script>
+<$mt:include module="HTMLヘッダー"$>
+<title><$mt:var name="page_title"$></title>
+</head>
+
+<body onload="mtEntryOnLoad()" onunload="mtEntryOnUnload()">
+
+<$mt:Include module="バナーヘッダー"$>
+
+<div id="wrap">
+
+<div class="wrap-inner">
+
+<div id="main">
+
+<ul class="path">
+<li><a href="<$mt:WebsiteURL$>" title="ホーム">ホーム</a></li>
+<li>コメントの確認</li>
+</ul>
+
+<section>
+<header>
+<h2><$mt:Var name="page_title"$></h2>
+</header>
+
+<mt:Ignore><!-- Comment Preview --></mt:Ignore>
+<div class="comment" id="comment-<$mt:CommentID$>">
+
+<div class="asset-meta">
+<$mt:CommentAuthorIdentity regex_replace="/<img([^>]+) \/>/g","<img$1>"$>
+<mt:IfCommentParent>
+<$mt:CommentAuthorLink$>から<a href="<mt:CommentParent><$mt:CommentLink$></mt:CommentParent>"><mt:CommentParent><$mt:CommentAuthor$></mt:CommentParent></a>への返信
+<mt:Else>
+<span class="vcard author"><$mt:CommentAuthorLink$></span>
+</mt:IfCommentParent>
+<span class="comment-pubdate"> <a href="<$mt:CommentLink$>"><time datetime="<$mt:CommentDate format_name="iso8601"$>"><$mt:CommentDate$></time></a></span>
+</div>
+
+<div class="comment-content">
+<$mt:CommentBody$>
+</div>
+
+</div>
+</section>
+
+<mt:Ignore><!-- Comment Form --></mt:Ignore>
+<section>
+<div class="comments-open" id="comments-open">
+<h3 class="comments-open-header">コメントする</h3>
+<div class="comments-open-content">
+<div id="comment-greeting"></div>
+<form method="post" action="<$mt:CGIPath$><$mt:CommentScript$>" name="comments_form" id="comments-form" onsubmit="return mtCommentOnSubmit(this)">
+<input type="hidden" name="static" value="1">
+<input type="hidden" name="armor" value="1">
+<input type="hidden" name="preview" value="">
+<input type="hidden" name="entry_id" value="<$mt:EntryID$>">
+<input type="hidden" name="__lang" value="<$mt:BlogLanguage$>">
+<mt:IfCommentParent>
+<input type="hidden" name="parent_id" value="<$mt:CommentParentID$>" id="comment-parent-id">
+</mt:IfCommentParent>
+
+<div id="comments-open-data">
+
+<div id="comment-form-name">
+<label for="comment-author">名前</label>
+<input id="comment-author" name="author" size="30" value="<$mt:CommentAuthor encode_html="1"$>" onfocus="mtShowCaptcha()" />
+</div>
+
+<div id="comment-form-email">
+<label for="comment-email">電子メール</label>
+<input type="email" id="comment-email" name="email" size="30" value="<$mt:CommentEmail encode_html="1"$>" onfocus="mtShowCaptcha()">
+</div>
+
+<div id="comment-form-url">
+<label for="comment-url">URL</label>
+<input type="url" id="comment-url" name="url" size="30" value="<$mt:CommentURL encode_html="1"$>" onfocus="mtShowCaptcha()">
+</div>
+
+</div>
+
+<mt:IfCommentParent>
+<div id="comment-form-reply">
+<input type="checkbox" id="comment-reply" name="comment_reply" value="<$mt:CommentParentID$>" checked="checked" onclick="mtSetCommentParentID()">
+<label for="comment-reply" id="comment-reply-label"><mt:CommentParent><$mt:CommentAuthor$></mt:CommentParent>からのコメントに返信</label>
+</div>
+</mt:IfCommentParent>
+
+<div id="comments-open-text">
+<label for="comment-text">コメント <mt:IfAllowCommentHTML>(スタイル用のHTMLタグを使えます)</mt:IfAllowCommentHTML></label>
+<textarea id="comment-text" name="text" rows="15" cols="50" onfocus="mtShowCaptcha()"><$mt:CommentBody autolink="0" sanitize="0" convert_breaks="0" encode_html="1"$></textarea>
+</div>
+
+<div id="comments-open-captcha"></div>
+<div id="comments-open-footer">
+<input type="submit" accesskey="v" name="preview_button" id="comment-preview" value="確認" onclick="this.form.preview.value='1';">
+<input type="submit" accesskey="s" name="post" id="comment-submit" value="投稿" />
+<input type="button" name="cancel" id="comment-cancel" value="キャンセル" onclick="window.location='<$mt:EntryPermalink$>'">
+</div>
+</form>
+
+</div>
+</div>
+</section>
+
+
+</div><!-- / main -->
+
+<$mt:Include module="サイドバー"$>
+
+</div><!-- / wrap-inner -->
+
+</div><!-- / wrap -->
+
+<$mt:Include module="バナーフッター"$>
+
+</body>
+</html></mt:Unless>

@@ -1,0 +1,83 @@
+<!DOCTYPE html><mt:Unless regex_replace="/\s*\n+/g","\n">
+<html lang="<$mt:BlogLanguage$>">
+<head>
+<$mt:include module="HTMLヘッダー"$>
+<title><$mt:BlogName encode_html="1"$></title>
+</head>
+
+<body>
+
+<$mt:Include module="バナーヘッダー"$>
+
+<div id="wrap">
+
+<div class="wrap-inner">
+
+<div id="main">
+
+<mt:Ignore>======================@homeが付いたウェブページ=====================</mt:Ignore>
+<mt:Pages tag="@home" lastn="1">
+<section id="page-<$mt:PageID$>" class="lead">
+<header>
+<h2><$mt:PageTitle$></h2>
+</header>
+<$mt:PageBody replace="<br />","<br>" regex_replace="/<img([^>]+) \/>/g","<img$1>"$>
+<mt:If tag="PageMore" convert_breaks="0">
+<div id="more">
+<$mt:PageMore replace="<br />","<br>" regex_replace="/<img([^>]+) \/>/g","<img$1>"$>
+</div><!-- / more -->
+</mt:If>
+
+<mt:PageIfTagged>
+<footer>
+<div class="entry-tags">
+<h3>Tag</h3>
+<ul>
+<mt:EntryTags>
+<li><a href="<$mt:TagSearchLink include_blogs="site" encode_js="1"$>" rel="tag" title="タグ「<$mt:TagName>」の一覧"><$mt:TagName></a></li>
+</mt:EntryTags>
+</ul>
+</div><!-- / entry-tags -->
+</footer>
+</mt:PageIfTagged>
+
+</section><!-- / lead -->
+</mt:Pages>
+<mt:Ignore>======================/ @homeが付いたウェブページ=====================</mt:Ignore>
+
+<mt:Ignore>======================最近の記事=====================</mt:Ignore>
+<mt:WebsiteHasblog>
+<mt:IfNonZero tag="BlogEntryCount" include_blogs="site">
+<section class="recent">
+<header>
+<h1>What's new</h1>
+<mt:Ignore>↑日本語に変更したときはCSSも確認して！</mt:Ignore>
+</header>
+<ol class="semantic-lists">
+<MTEntries lastn="1" include_blogs="site">
+<mt:Ignore>====↑lastnの件数は適宜変更してね！====</mt:Ignore>
+<mt:BlogParentWebsite>
+<mt:SetVarBlock name="website_id"><mt:WebsiteID></mt:SetVarBlock>
+<li class="entry-list">
+<$mt:include module="ブログ記事の概要" blog_id="$website_id"$>
+</li>
+</mt:BlogParentWebsite>
+</MTEntries>
+</ol><!-- / semantic-lists -->
+</section><!-- / recent -->
+</mt:IfNonZero>
+</mt:WebsiteHasBlog>
+<MTIgnore>======================/ 最近の記事=====================</MTIgnore>
+
+</div><!-- / main -->
+
+<$mt:Include module="サイドバー"$>
+
+</div><!-- / wrap-inner -->
+
+</div><!-- / wrap -->
+
+<$mt:Include module="バナーフッター"$>
+
+</body>
+</html></mt:Unless>

@@ -1,0 +1,17 @@
+<mt:WebsiteHasblog>
+<mt:IfArchiveTypeEnabled archive_type="Page">
+<section class="page-list">
+<h2>Page</h2>
+<ul>
+<mt:Pages sort_by="title" sort_order="ascend" tag="NOT(@home) AND NOT(@topnav1) AND NOT(@topnav2) AND NOT(@topnav3) AND NOT(@topnav4) AND NOT(@topnav5)">
+<li id="page-<$mt:PageID$>"><a href="<$mt:PagePermalink$>" title="【<$mt:PageTitle$>】on「<$mt:BlogName$>」"><$mt:PageTitle$></a></li>
+</mt:Pages>
+
+<mt:Pages include_blogs="site">
+<li id="page-<$mt:PageID$>"><a href="<$mt:PagePermalink$>" title="【<$mt:PageTitle$>】on「<$mt:BlogName$>」"><$mt:PageTitle$></a></li>
+</mt:Pages>
+
+</ul>
+</section>
+</MT:IfArchiveTypeEnabled>
+</mt:WebsiteHasblog>

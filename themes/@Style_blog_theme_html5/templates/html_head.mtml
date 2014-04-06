@@ -1,0 +1,51 @@
+<mt:SetVarBlock name="website_id"><mt:BlogParentWebsite><mt:WebsiteID></mt:BlogParentWebsite></mt:SetVarBlock>
+<meta charset="<$mt:PublishCharset$>">
+<meta http-equiv="Content-Type" content="text/html; charset=<$MTPublishCharset$>">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="generator" content="<$mt:ProductName version="1"$>">
+<meta name="keywords" content="キーワード1,キーワード2,キーワード3<mt:EntryIfTagged>,<mt:EntryTags glue=","><$mt:TagName$></mt:EntryTags></mt:EntryIfTagged><mt:IfNonZero tag="MTEntryKeywords">,<$mt:EntryKeywords$></mt:IfNonZero><mt:Pages><mt:IfNonZero tag="MTPageKeywords">,<$mt:PageKeywords$></mt:IfNonZero></mt:Pages>">
+
+<mt:If name="entry_template">
+<meta name="description" content="<$mt:EntryExcerpt remove_html="1"$>">
+<mt:Else>
+<mt:If name="category_archive">
+<meta name="description" content="<$mt:ArchiveTitle$> <$mt:CategoryDescription$>">
+<mt:Else>
+<mt:If name="page_template">
+<meta name="description" content="<$mt:PageTitle$> <$mt:PageExcerpt remove_html="1"$>">
+<mt:Else>
+<mt:If name="main_index">
+<meta name="description" content="<$mt:BlogDescription$>">
+<mt:Else>
+<meta name="description" content="<$mt:var name="page_title"$>">
+</mt:If>
+</mt:If>
+</mt:If>
+</mt:If>
+
+
+
+<link rel="stylesheet" href="<$mt:Link template="リセットスタイルシート" blog_id="$website_id"$>" type="text/css" media="screen">
+<link rel="stylesheet" href="<$mt:Link template="スタイルシート" blog_id="$website_id"$>" type="text/css" media="screen">
+<link rel="stylesheet" href="<$mt:Link template="slimbox2_css" blog_id="$website_id"$>" type="text/css" media="screen">
+
+<link rel="alternate" href="<$mt:Link template="feed_recent" blog_id="$website_id"$>" type="application/atom+xml" title="Recent Entries">
+
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+<![endif]-->
+
+
+<script src="<$mt:Link template="javascript"$>"></script>
+<script src="<$mt:Link template="jquery_js" blog_id="$website_id"$>"></script>
+<script src="<$mt:Link template="slimbox2_js" blog_id="$website_id"$>"></script>
+
+<mt:BlogParentWebsite>
+<mt:WebsiteIfCCLicense>
+<$mt:CCLicenseRDF$>
+</mt:WebsiteIfCCLicense>
+</mt:BlogParentWebsite>
+
+<!-- @Style HTML5 Theme http://atstyle.biz/ -->
+

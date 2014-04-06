@@ -1,0 +1,64 @@
+<!DOCTYPE html><mt:Unless regex_replace="/\s*\n+/g","\n">
+<html lang="<$mt:BlogLanguage$>">
+<head>
+<$mt:include module="HTMLヘッダー"$>
+<title><$mt:ArchiveTitle$>-<$mt:BlogName encode_html="1"$>-<mt:BlogParentWebsite><$mt:BlogName encode_html="1"$></mt:BlogParentWebsite></title>
+</head>
+
+<body>
+
+<mt:BlogParentWebsite>
+<$mt:include module="バナーヘッダー" blog_id="$website_id"$>
+</mt:BlogParentWebsite>
+
+<div id="wrap">
+
+<div class="wrap-inner">
+
+<div id="main">
+
+<mt:Ignore>===================パンくず========================</mt:Ignore>
+<ul class="path">
+<li><a href="<mt:BlogParentWebsite><$mt:WebsiteURL$></mt:BlogParentWebsite>">Home</a></li>
+<li><a href="<$mt:BlogURL$>"><$mt:BlogName encode_html="1"$></a></li>
+<mt:HasNoParentCategory>
+<li><$mt:CategoryLabel$></li>
+</mt:HasNoParentCategory>
+<mt:HasParentCategory>  
+<mt:TopLevelParent>  
+<li><a href="<$mt:CategoryArchiveLink$>"><$mt:CategoryLabel$></a></li>  
+</mt:TopLevelParent> 
+<li><$mt:CategoryLabel$></li>  
+</mt:HasParentCategory>
+</ul>
+<mt:Ignore>===================/ パンくず========================</mt:Ignore>
+
+<mt:Ignore>===================記事リスト========================</mt:Ignore>
+<ol class="semantic-lists">
+<mt:Entries lastn="0">
+<li class="entry-list">
+<mt:BlogParentWebsite>
+<mt:SetVarBlock name="website_id"><mt:WebsiteID></mt:SetVarBlock>
+<$mt:include module="ブログ記事の概要" blog_id="$website_id"$>
+</mt:BlogParentWebsite>
+</li>
+</mt:Entries>
+</ol><!-- / semantic-lists -->
+<mt:Ignore>====================/ 記事リスト=======================</mt:Ignore>
+
+</div><!-- / main -->
+
+<mt:BlogParentWebsite>
+<$mt:include module="サイドバー" blog_id="$website_id"$>
+</mt:BlogParentWebsite>
+
+</div><!-- / wrap-inner -->
+
+</div><!-- / wrap -->
+
+<mt:BlogParentWebsite>
+<$mt:include module="バナーフッター" blog_id="$website_id">
+</mt:BlogParentWebsite>
+
+</body>
+</html></mt:Unless>
