@@ -1,76 +1,76 @@
---- 
-id: @Style_blog_theme_html5
-label: @Style ブログテーマ html5
-name: @Style ブログテーマ html5
+---
+id: "@Style_blog_theme_html5"
+label: "@Style ブログテーマ html5"
+name: "@Style ブログテーマ html5"
 version: 1.0
-author_link: 'http://atstyle.biz/theme_temp/free/mt5_html5/'
+author_link: "http://atstyle.biz/theme_temp/free/mt5_html5/"
 author_name: "@Style"
 class: blog
-description: '@Styleオリジナルブログ。ポータルウェブサイトと連動したデザインのブログを作成します。'
+description: "@Styleオリジナルブログ。ポータルウェブサイトと連動したデザインのブログを作成します。"
 thumbnail_file: thumb.png
 thumbnail_file_medium: thumb-medium.png
 thumbnail_file_small: thumb-small.png
 
-elements: 
-  template_set: 
+elements:
+  template_set:
     importer: template_set
     component: ~
-    data: 
+    data:
       base_path: templates
-      templates: 
+      templates:
 
-        index: 
-          javascript: 
+        index:
+          javascript:
             label: JavaScript
             outfile: js/mt.js
             rebuild_me: 1
-          main_index: 
+          main_index:
             label: メインページ
             outfile: index.html
             rebuild_me: 1
-          rsd: 
+          rsd:
             label: RSD
             outfile: rsd.xml
             rebuild_me: 1
 
-        archive: 
-          category_entry_listing: 
+        archive:
+          category_entry_listing:
             label: カテゴリ別ブログ記事リスト
-            mappings: 
-              category: 
+            mappings:
+              category:
                 archive_type: Category
                 file_template: "%-c/%i"
                 preferred: 1
-        individual: 
-          entry: 
+        individual:
+          entry:
             label: ブログ記事
-            mappings: 
-              individual: 
+            mappings:
+              individual:
                 archive_type: Individual
                 file_template: "%y/%m/%-f"
                 preferred: 1
-        page: 
-          page: 
+        page:
+          page:
             label: ウェブページ
-            mappings: 
-              page: 
+            mappings:
+              page:
                 archive_type: Page
                 file_template: "%-c/%-f"
                 preferred: 1
 
-        module: 
-          html_head: 
+        module:
+          html_head:
             label: HTMLヘッダー
 
-        system: 
-          comment_preview: 
+        system:
+          comment_preview:
             label: コメントプレビュー
-          comment_response: 
+          comment_response:
             label: コメント完了
-          dynamic_error: 
+          dynamic_error:
             label: ダイナミックパブリッシングエラー
-          popup_image: 
+          popup_image:
             label: ポップアップ画像
-          search_results: 
+          search_results:
             label: 検索結果
 

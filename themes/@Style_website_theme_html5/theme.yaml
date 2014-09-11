@@ -1,16 +1,16 @@
---- 
-id: @Style_website_theme_html5
-label: @Style ウェブサイトテーマ html5
-name: @Style ウェブサイトテーマ html5
+---
+id: "@Style_website_theme_html5"
+label: "@Style ウェブサイトテーマ html5"
+name: "@Style ウェブサイトテーマ html5"
 version: 1.0
-author_link: http://atstyle.biz/theme_temp/free/mt5_html5/
+author_link: "http://atstyle.biz/theme_temp/free/mt5_html5/"
 author_name: "@Style"
 class: website
-description: @Styleオリジナルウェブサイト。ウェブサイトに存在するブログのコンテンツをポータルウェブサイトとして表示するウェブサイトを作成します。
+description: "@Styleオリジナルウェブサイト。ウェブサイトに存在するブログのコンテンツをポータルウェブサイトとして表示するウェブサイトを作成します。"
 thumbnail_file: thumb.png
 thumbnail_file_medium: thumb-medium.png
 thumbnail_file_small: thumb-small.png
-elements: 
+elements:
   default_folders:
     importer: default_folders
     name: Default Folders
@@ -28,7 +28,7 @@ elements:
         title: ウェブサイトのトップページ
         text: |
           <p>アットスタイルテンプレートで生成されたウェブサイトのトップページです。タイトルを含め内容を適切に書き換えてください。</p>
-        tags: @home
+        tags: "@home"
       index:
         basename: about
         title: About
@@ -44,41 +44,41 @@ elements:
           <dt>ウェブサイト</dt>
           <dd><a href="http://atstyle.biz/">http://atstyle.biz/</a></dd>
           </dl>
-        tags: @topnav1,@nav1
+        tags: "@topnav1,@nav1"
         folder: about
 
-  template_set: 
+  template_set:
     importer: template_set
     component: ~
-    data: 
+    data:
       base_path: templates
-      templates: 
-        index: 
-          feed_recent: 
+      templates:
+        index:
+          feed_recent:
             label: 最新記事のフィード
             outfile: atom.xml
             rebuild_me: 1
-          javascript: 
+          javascript:
             label: JavaScript
             outfile: js/mt.js
             rebuild_me: 1
-          main_index: 
+          main_index:
             label: メインページ
             outfile: index.html
             rebuild_me: 1
-          rsd: 
+          rsd:
             label: RSD
             outfile: rsd.xml
             rebuild_me: 1
-          styles: 
+          styles:
             label: スタイルシート
             outfile: css/styles.css
             rebuild_me: 1
-          reset_stylesheet: 
+          reset_stylesheet:
             label: リセットスタイルシート
             outfile: css/reset_stylesheet.css
             rebuild_me: 1
-          sitemap: 
+          sitemap:
             label: Site Map
             outfile: sitemap/index.html
             rebuild_me: 1
@@ -95,30 +95,30 @@ elements:
             outfile: js/jquery.js
             rebuild_me: 1
 
-        page: 
-          page: 
+        page:
+          page:
             label: ウェブページ
-            mappings: 
-              page: 
+            mappings:
+              page:
                 archive_type: Page
                 preferred: 1
 
-        module: 
-          comments: 
+        module:
+          comments:
             label: コメント
-          entry_summary: 
+          entry_summary:
             label: ブログ記事の概要
-          banner_footer: 
+          banner_footer:
             label: バナーフッター
-          banner_header: 
+          banner_header:
             label: バナーヘッダー
-          navigation: 
+          navigation:
             label: ナビゲーション
-          nav_list: 
+          nav_list:
             label: ナビゲーションリスト
-          sub: 
+          sub:
             label: サイドバー
-          trackbacks: 
+          trackbacks:
             label: トラックバック
           html_head:
             label: HTMLヘッダー
@@ -129,43 +129,43 @@ elements:
           copy_footer:
             label: コピー(フッター)
 
-        system: 
-          comment_preview: 
+        system:
+          comment_preview:
             label: コメントプレビュー
-          comment_response: 
+          comment_response:
             label: コメント完了
-          dynamic_error: 
+          dynamic_error:
             label: ダイナミックパブリッシングエラー
-          popup_image: 
+          popup_image:
             label: ポップアップ画像
-          search_results: 
+          search_results:
             label: 検索結果
 
-        widget: 
-          sub_page_list: 
+        widget:
+          sub_page_list:
             label: ページリスト
-          sub_blog_category: 
+          sub_blog_category:
             label: カテゴリ
-          sub_recent_comments: 
+          sub_recent_comments:
             label: 最近のコメント
-          sub_recent_trackback: 
+          sub_recent_trackback:
             label: 最近のトラックバック
-          sub_photo: 
+          sub_photo:
             label: フォト
-          sub_tag_cloud: 
+          sub_tag_cloud:
             label: タグクラウド
-          sub_openid: 
+          sub_openid:
             label: OpenID対応
           sub_creative_commons:
             label: クリエイティブコモンズ
-          sub_free_box: 
+          sub_free_box:
             label: サイドバー フリーボックス
 
 
-        widgetset: 
-          site_widgetset: 
+        widgetset:
+          site_widgetset:
             label: サイドバーウィジェットセット
             order: 1000
-            widgets: 
+            widgets:
               - カテゴリ
 
